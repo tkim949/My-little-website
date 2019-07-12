@@ -65,7 +65,7 @@ void coinChange(std::vector<int> vec, int total) {
         }
 
     }
-
+    std::cout<<"Our total: "<<total<<std::endl;
     std::cout<<"The minimum number of coins: "<< minN[total]<<std::endl;
 
     if(usedC[total] == -1) {
