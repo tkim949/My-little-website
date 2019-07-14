@@ -12,8 +12,8 @@
 #include <stack>
 #include <climits>
 
-
-void coinChange(std::vector<int> vec, int total);
+std::vector<int> usedCoinArr(std::vector<int> usedCoin, std::vector<int> vec, int total);
+int coinChange(std::vector<int> vec, int total);
 int show(){
 
     int total;
@@ -39,16 +39,17 @@ int show(){
 
 }
 
-void coinChange(std::vector<int> vec, int total) {
+int coinChange(std::vector<int> vec, int total) {
 
     int minN [total +1];
-    int usedC [total +1];
+    std::vector<int> usedC;
+    //int usedC [total +1];
 
     minN[0] = 0; // when we use 0 coin, the result is 0
 
     for(int i = 1; i <=total; i++) {
         minN[i] = INT_MAX; //just placeholder
-        usedC[i] = -1;
+        //usedC[i] = -1;
     }
 
     for(int j = 0; j <= vec.size(); j++){
@@ -67,7 +68,9 @@ void coinChange(std::vector<int> vec, int total) {
     }
     std::cout<<"Our total: "<<total<<std::endl;
     std::cout<<"The minimum number of coins: "<< minN[total]<<std::endl;
-
+    usedCoinArr(usedC, vec, total);
+    
+/********************************************************
     if(usedC[total] == -1) {
         std::cout<< "No solution"<<std::endl;
     }
@@ -82,9 +85,31 @@ void coinChange(std::vector<int> vec, int total) {
         std::cout<< vec[k]<<" ";
         bottomS = bottomS - vec[k];
     }
+    ****************************************************/
    std::cout<<std::endl;
 }
 
+std::vector<int> usedCoinArr(std::vector<int> usedCoin, std::vector<int> vec, int total){
+    
+    std::vector<int> usedC;
+    if(usedC[total] == -1) {
+        std::cout<< "No solution"<<std::endl;
+    }
+
+    int bottomS = total;
+
+    std::cout<<"The used coin is: ";
+
+    while (bottomS > 0) {
+
+        int k = usedC[bottomS];
+        usedC.push_back(vec[k]);
+       // std::cout<< vec[k]<<" ";
+        bottomS = bottomS - vec[k];
+    }
+  
+    return usedC;
+}
 
 
 
