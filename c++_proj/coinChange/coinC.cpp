@@ -96,7 +96,7 @@ int coinChange(std::vector<int> vec, int total) {
 
 std::vector<int> usedCoinArr(std::vector<int> usedC, std::vector<int> vec, int total){
     
-    std::vector<int> usedA;
+    std::vector<int> usedA(vec.size(), 0);
     if(usedC[total] == -1) {
         std::cout<< "No solution"<<std::endl;
         
@@ -109,8 +109,9 @@ std::vector<int> usedCoinArr(std::vector<int> usedC, std::vector<int> vec, int t
     while (bottomS > 0) {
 
         int k = usedC[bottomS];
+        usedA[k] +=1;
         usedA.push_back(vec[k]);
-       std::cout<< vec[k]<<" ";
+        std::cout<< vec[k]<<" ";
         bottomS = bottomS - vec[k];
     }
   std::cout<<std::endl;
