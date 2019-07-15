@@ -99,6 +99,7 @@ std::vector<int> usedCoinArr(std::vector<int> usedC, std::vector<int> vec, int t
     std::vector<int> usedA;
     if(usedC[total] == -1) {
         std::cout<< "No solution"<<std::endl;
+        //:
     }
 
     int bottomS = total;
