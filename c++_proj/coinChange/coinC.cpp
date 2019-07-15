@@ -42,7 +42,7 @@ int show(){
 int coinChange(std::vector<int> vec, int total) {
 
     int minN [total +1];
-    std::vector<int> usedC;
+    std::vector<int> usedC(total+1, -1);
     //int usedC [total +1];
 
     minN[0] = 0; // when we use 0 coin, the result is 0
