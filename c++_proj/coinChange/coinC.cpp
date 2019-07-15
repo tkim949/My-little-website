@@ -110,7 +110,7 @@ std::vector<int> usedCoinArr(std::vector<int> usedC, std::vector<int> vec, int t
 
         int k = usedC[bottomS];
         usedA[k] +=1;
-        usedA.push_back(vec[k]);
+       // usedA.push_back(vec[k]);
         std::cout<< vec[k]<<" ";
         bottomS = bottomS - vec[k];
     }
