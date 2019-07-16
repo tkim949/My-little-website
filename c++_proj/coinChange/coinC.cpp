@@ -52,7 +52,7 @@ int coinChange(std::vector<int> vec, int total) {
         //usedC[i] = -1;
     }
 
-    for(int j = 0; j <= vec.size(); j++){
+    for(int j = 0; j < vec.size(); j++){ //I used <= but it was wrong. < is correct
 
         for(int i=1; i <=total; i++) {
 
