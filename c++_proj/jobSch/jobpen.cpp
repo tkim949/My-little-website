@@ -10,7 +10,7 @@
 #include <string>
 #include <stack>
 #include <queue>
-
+#include <sstream>
 std::queue<int> jobSchedule(std::vector < std::vector<int> > & sT, int totD);
 std::stack<int> scheduleLS(std::vector <std::vector<int> > & sT);
 void insertSort( std::vector<std::vector<int> > &arr, int len){
@@ -47,7 +47,6 @@ int show() {
         std::cerr << "Error while opening input file" << std::endl;
         return 1;
     }
-    in_file.clear();
 
     std::ofstream out_file;
     out_file.open("result.txt", std::ios::out);
@@ -57,40 +56,45 @@ int show() {
         return 1;
     }
 
-
+   // std::string line;
     int d= 1;
-
-       while(!in_file.eof()){
-            out_file <<"\nSet " << d  << std::endl;
-            std::cout<<"\nSet " <<d <<std::endl;
-
+      
+         // while(std::getline(in_file, line)){       
+          while(!in_file.eof()){
+     
             int penalty =0, deadline =0;
             int cnt, idNum;
             int totalD;
+           // std::istringstream iss(line);
+             in_file >> cnt;
+             in_file >> totalD;
+           // iss>> cnt;
+           // iss>>totalD;            
 
-            in_file >> cnt;
-            in_file >> totalD;
-
+            if(in_file.eof()){
+                    break;
+            }
             std::vector< std::vector<int> > vecOut;
             std::vector<int> vecIn;
 
+            out_file <<"\nSet " << d  << std::endl;
+            std::cout<<"\nSet " <<d <<std::endl;
 
 
            for (int j = 0; j < cnt; j++) {
 
                vecIn.clear();
-
+               
                 in_file>>idNum;
                 in_file>>penalty;
                 in_file>>deadline;
-
-
+               //while(iss>>idNum>>penalty>>deadline){
                 vecIn.push_back(penalty);
                 vecIn.push_back(deadline);
                 vecIn.push_back(idNum);
 
                 vecOut.push_back(vecIn);
-
+               //}
             }
 
             //std::sort(vecOut.begin(), vecOut.end(), std::greater<>());
@@ -135,6 +139,7 @@ int show() {
             }
 
          d +=1;
+         //if(!in_file.eof()) break;
          std::cout<<std::endl;
          out_file<<std::endl;
         }
