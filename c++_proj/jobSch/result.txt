@@ -1,0 +1,8 @@
+
+Set 1
+Number of activities selected = 3
+Activities: 5 4 1 
+
+Set 2
+Number of activities selected = 0
+Activities: 

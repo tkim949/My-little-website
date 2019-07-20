@@ -41,12 +41,13 @@ void insertSort( std::vector<std::vector<int> > &arr, int len){
 
 int show() {
     std::ifstream in_file;
-    in_file.open("job.txt");
+    in_file.open("job1.txt");
 
     if (!in_file) {
         std::cerr << "Error while opening input file" << std::endl;
         return 1;
     }
+    in_file.clear();
 
     std::ofstream out_file;
     out_file.open("result.txt", std::ios::out);
@@ -93,7 +94,7 @@ int show() {
             }
 
             //std::sort(vecOut.begin(), vecOut.end(), std::greater<>());
-
+           /******************************************************
            for(int i=0; i <vecOut.size(); i++) {
 
                for(int j= 0; j<3; j++) {
@@ -102,12 +103,12 @@ int show() {
                }
                std::cout<<std::endl;
            }
-
+           **********************************************************/
 
             int sz = static_cast<int> (vecOut.size());
 
             insertSort(vecOut, sz);
-
+            /*****************************************************
             std::cout<<"After sorting: "<<std::endl;
 
             for(auto v: vecOut) {
@@ -116,7 +117,7 @@ int show() {
                 }
                 std::cout<<std::endl;
             }
-
+           ***************************************************************/
 
             std::queue <int> sta;
 
@@ -169,7 +170,7 @@ std::queue<int> jobSchedule(std::vector < std::vector<int> > & sT, int totD) {
             }
 
         }
-        std::cout<<std::endl;
+       // std::cout<<std::endl;
     }
 
     return queJ ;
@@ -207,7 +208,7 @@ std::stack<int> scheduleLS(std::vector <std::vector<int> > & sT){
 
 int main() {
     std::cout << "==================================="<<std::endl;
-    std::cout << "   Please see the results.txt!" << std::endl;
+    std::cout << "   Please see the result.txt!" << std::endl;
     std::cout << "==================================="<<std::endl;
     show();
 
