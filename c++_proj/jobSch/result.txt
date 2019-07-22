@@ -1,8 +1,12 @@
 
 Set 1
-Number of activities selected = 3
-Activities: 5 4 1 
+Number of activities selected = 5
+Activities: 4 5 1 3 2 
+Al Number of activities selected = 5
+Activities: 4 5 3 2 1 
 
 Set 2
-Number of activities selected = 2
-Activities: 3 1 
+Number of activities selected = 3
+Activities: 2 1 3 
+Al Number of activities selected = 3
+Activities: 2 3 1 

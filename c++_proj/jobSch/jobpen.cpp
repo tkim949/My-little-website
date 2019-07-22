@@ -13,6 +13,8 @@
 #include <sstream>
 std::queue<int> jobSchedule(std::vector < std::vector<int> > & sT, int totD);
 std::stack<int> scheduleLS(std::vector <std::vector<int> > & sT);
+
+std::queue<int> jobScheduleAl(std::vector < std::vector<int> > & sT, int totD); 
 void insertSort( std::vector<std::vector<int> > &arr, int len){
 
     int obj, j;
@@ -137,7 +139,23 @@ int show() {
                 out_file<<sta.front()<<" ";
                 sta.pop();
             }
+             
+            std::cout<<std::endl;
+            out_file<<std::endl;
+            std::queue <int> staAl;
 
+            staAl = jobScheduleAl(vecOut, totalD);
+
+            std::cout<<"Al Number of activities selected = "<<staAl.size()<<std::endl;
+            std::cout<<"Activities: ";
+            out_file<<"Al Number of activities selected = "<<staAl.size()<<std::endl;
+            out_file<<"Activities: ";
+
+            while(!staAl.empty()) {
+                std::cout<<staAl.front()<<" ";
+                out_file<<staAl.front()<<" ";
+                staAl.pop();
+            }
          d +=1;
          //if(!in_file.eof()) break;
          std::cout<<std::endl;
@@ -157,9 +175,45 @@ std::queue<int> jobSchedule(std::vector < std::vector<int> > & sT, int totD) {
     std::queue <int> queJ;
     int size = static_cast<int> (sT.size());
     std::vector <bool> isVac ((unsigned int)totD, true);
-
+    std::vector <bool> beforeD ((unsigned int)size, false);
     for(int i=0; i < size; i++) {
 
+        int idx = std::min(totD, sT[i][1]) -1;
+
+        while(idx >=0 && (sT[i][1]-1 <= idx)) {
+
+            if(isVac[idx]) {
+                queJ.push(sT[i][2]);
+                beforeD[i] = true;
+                isVac[idx] = false;
+                idx = -1;
+            }
+
+            else{
+                idx -=1;
+            }
+
+        }
+     }
+       for(int j=0; j<size; j++){
+       // for(auto a: beforeD){
+           if(beforeD[j] == false) {
+             queJ.push(sT[j][2]);
+        }
+       // std::cout<<std::endl;
+    }
+   return queJ ;
+}
+
+std::queue<int> jobScheduleAl(std::vector < std::vector<int> > & sT, int totD) {
+
+    std::queue <int> queAl;
+    int size = static_cast<int> (sT.size());
+    std::vector <bool> isVac ((unsigned int)totD, true);
+
+    for(int i=0; i < size; i++) {
+        queAl.push(sT[i][2]);
+       /***********************************************
         int idx = std::min(totD, sT[i][1]) -1;
 
         while(idx >=0 && (sT[i][1]-1 <= idx)) {
@@ -175,12 +229,11 @@ std::queue<int> jobSchedule(std::vector < std::vector<int> > & sT, int totD) {
             }
 
         }
-       // std::cout<<std::endl;
+     ******************************************************/
     }
 
-    return queJ ;
+    return queAl ;
 }
-
 
 
 
