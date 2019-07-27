@@ -1,6 +1,6 @@
 /***************************************************************************
  * * The school assignment asked for only algorithm for the shortest path.
- * * But, I wanted to write this code ofr myself.
+ * * But, I wanted to write this code for myself.
  ***************************************************************************/
 
 #include <iostream>
