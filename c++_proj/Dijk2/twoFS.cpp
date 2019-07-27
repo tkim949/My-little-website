@@ -94,14 +94,14 @@ int show(){
 void twoSta(std::vector<std::vector<int> > &ot) {
 
     std::vector<std::vector<int> > twoFS;
-
+    int sum, min;
     for(int i=0; i <ot.size(); i++) {
 
 
         for(int j= i+1; j<ot[0].size(); j++) {
-            int sum =0;
-            std::cout<<"Fire Stations: "<<i<<" & "<<j<<std::endl;
-            int min =0;
+            sum =0;
+            std::cout<<"Fire Stations: "<<i<<" & "<<j<<" ";
+            min =0;
 
 
             for(int k=0; k<ot.size(); k++) {
@@ -113,12 +113,12 @@ void twoSta(std::vector<std::vector<int> > &ot) {
                         twoFS.push_back({i, k, ot[i][k]});
                         min = ot[i][k];
 
-                        std::cout<<i<<" "<<k<<" distance ="<<ot[i][k]<<" : ";
+                      //  std::cout<<i<<" "<<k<<" distance ="<<ot[i][k]<<" : ";
                     }
                     else{
                         twoFS.push_back({j, k, ot[j][k]});
                         min = ot[j][k];
-                        std::cout<<j<<" "<<k<<" distance ="<<ot[j][k]<<" : ";
+                       // std::cout<<j<<" "<<k<<" distance ="<<ot[j][k]<<" : ";
                     }
 
                     sum +=min;
@@ -127,8 +127,10 @@ void twoSta(std::vector<std::vector<int> > &ot) {
 
             }
 
-          std::cout<<"Total distance: "<<sum<<std::endl;
+
+          std::cout<<"Total minimum  distance: "<<sum<<std::endl;
         }
+
     }
 /*********************************************************************
     for(auto e: twoFS) {
@@ -145,7 +147,7 @@ void twoSta(std::vector<std::vector<int> > &ot) {
 //std::vector<int> dijkstra(std::map<std::string, std::map<std::string, int> > & ad, std::string start, int Vt);
 std::vector<int> dijkstra(std::map<int, std::map<int, int> > & ad, int start, int Vt){
 
-    std::priority_queue< iPair, std::vector<iPair>, std::greater<> > priQ;
+    std::priority_queue< iPair, std::vector<iPair>, std::greater<iPair> > priQ;
 
     //std::vector<int> dist((unsigned long)Vt, INT_MAX);
     std::vector<int> dist((unsigned long)Vt, INT_MAX);
@@ -192,10 +194,12 @@ std::vector<int> dijkstra(std::map<int, std::map<int, int> > & ad, int start, in
             for(int j=0; j <Vt; j++) {
                 std::cout<<j<<": "<<dist[j]<<std::endl;
             }
+           /****************************************************
             std::cout<<"Vertex: Parents"<<std::endl;
             for(auto d: parent) {
                 std::cout << d.first << ":  " << d.second << std::endl;
             }
+           **************************************************/
 
             std::cout<<"Vertex: Parents Path"<<std::endl;
             for(auto mapIt = begin(parentPath); mapIt !=end(parentPath); mapIt++){
