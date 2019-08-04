@@ -82,7 +82,10 @@ void topoSort(std::map<std::string, std::vector<std::string> > & mapG) {
 void print(std::stack<std::string> st){
 
     while (!st.empty()) {
-
+        if(st.top()=="NONE"){
+             st.pop();
+             continue;  
+         }
         std::cout<< st.top()<<" ";
         st.pop();
     }
@@ -131,6 +134,7 @@ void distan(std::stack<std::string> str, std::map<std::string, std::vector<std::
         }
     }
     for(auto d: dist){
+       if(d.first == "NONE") continue;
         std::cout<<"dist "<<d.first<<" "<<d.second<<std::endl;
     }
 
